@@ -34,7 +34,14 @@ def main_function(first_folder, second_folder):
 			os.mkdir(second_folder)
 
 		# get list of pics from first folder	
-		name_pics_list = os.listdir(first_folder)	
+		name_pics_list = os.listdir(first_folder)
+
+		if not name_pics_list:
+			raise Exception("First folder must contain files")	
+
+		for name in name_pics_list:
+			if ".jpg" not in name:
+				raise Exception("First folder must contain jpg files")
 
 		# loop through first folder and convert
 		for name_pic in name_pics_list:
