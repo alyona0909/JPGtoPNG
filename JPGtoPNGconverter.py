@@ -8,7 +8,7 @@ from PIL import Image
 first_folder = sys.argv[1]
 second_folder = sys.argv[2]
 
-valid_pattern = re.compile(r"[a-zA-Z0-9-]{1,}\/$")
+valid_pattern = re.compile(r"[a-zA-Z0-9:\/]{1,}")
 
 try:
 	# checking is folder's name is valid
@@ -17,6 +17,11 @@ try:
 
 	if not is_first_folder or not is_second_folder:
   		raise Exception("Wrong name of folder")
+
+	if first_folder[-1]!='/':
+		first_folder += '/'
+	if second_folder[-1]!='/':
+		second_folder += '/'
 
 	# if second not exists - to create
 	if not os.access("./" + second_folder, os.F_OK):
@@ -28,11 +33,8 @@ try:
 	# function to convert image
 	def convert_to_png(first_folder, second_folder, name_file):
 		img = Image.open("./" + first_folder + name_file)
-		name_file_without_jpg = name_file.split('.')
-		name = ""
-		for i in range(len(name_file_without_jpg) - 1):
-			name += name_file_without_jpg[i] + "."
-		img.save("./" + second_folder + name + "png", "png")
+		name_file = os.path.splitext(name_file)[0]
+		img.save("./" + second_folder + name_file + ".png", "png")
 
 	# loop through first folder and convert
 	for name_pic in name_pics_list:
