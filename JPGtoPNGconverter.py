@@ -39,12 +39,3 @@ try:
 		convert_to_png(first_folder, second_folder, name_pic)
 except Exception as err:
 	print(err)
-
-
-
-
-
-
-
-
-
