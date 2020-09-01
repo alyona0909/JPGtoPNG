@@ -8,7 +8,7 @@ from PIL import Image
 first_folder = sys.argv[1]
 second_folder = sys.argv[2]
 
-valid_pattern = re.compile(r"[a-zA-Z0-9:\/]{1,}")
+valid_pattern = re.compile(r"[a-zA-Z0-9\/]{1,}")
 
 try:
 	# checking is folder's name is valid
