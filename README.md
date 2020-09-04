@@ -5,7 +5,7 @@ A console application to convert jpg files to png format.
 Before using you need to install :
 
 ```sh
-pyp install pillow
+pip install pillow
 ```
 
 ## How to use
